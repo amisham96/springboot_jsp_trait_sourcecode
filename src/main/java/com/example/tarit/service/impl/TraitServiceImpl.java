@@ -40,4 +40,29 @@ public class TraitServiceImpl implements TraitService {
 		return traitRepo.advanceSearch(chromosome, trait_associated, specific_trait_associated);
 	}
 
+	@Override
+	public int getChromosomeCount() {
+		// TODO Auto-generated method stub
+		return traitRepo.getChromosomeCount();
+	}
+
+	@Override
+	public List<Object> getDistinctChromosome() {
+		// TODO Auto-generated method stub
+		System.out.println(traitRepo.getDistinctChromosome());
+		return traitRepo.getDistinctChromosome();
+	}
+
+	@Override
+	public List<Object> getTraitByChromosome(int chromosome) {
+		// TODO Auto-generated method stub
+		return traitRepo.getTraitByChromosome(chromosome);
+	}
+
+	@Override
+	public List<Object> getSpecificTraitByTrait(String trait_class, int chromosome) {
+		// TODO Auto-generated method stub
+		return traitRepo.getSpecificTraitByTrait(trait_class, chromosome);
+	}
+
 }

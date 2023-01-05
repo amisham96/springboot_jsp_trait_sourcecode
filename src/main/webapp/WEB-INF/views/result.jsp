@@ -143,6 +143,11 @@
 													<th>PUTATIVE FUNCTION</th>
 													<th>TRAIT ASSOCIATED</th>
 													<th>SPECIFIC TRAIT ASSOCIATED</th>
+													<th>SSR</th>
+													<th>SSR LOCATION GENE PREMIER</th>
+													<th>CGSSR PREMIER</th>
+													<th>TM</th>
+													<th>ECPECTED AMPLICON</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -156,6 +161,11 @@
 														<td>${trait.putative_function}</td>
 														<td>${trait.trait_associated}</td>
 														<td>${trait.specific_trait_associated}</td>
+														<td>${trait.ssr}</td>
+														<td>${trait.ssr_location_gene_sequence}</td>
+														<td>${trait.cgssr_premier}</td>
+														<td>${trait.tm}</td>
+														<td>${trait.expected_amplicon}</td>
 												</c:forEach>
 											</tbody>
 										</table>

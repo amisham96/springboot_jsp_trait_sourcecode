@@ -19,5 +19,17 @@ public interface TraitRepository extends JpaRepository<Trait, Long> {
 	
 	@Query("select t from Trait t where t.chromosome = ?1 and t.trait_associated = ?2 and t.specific_trait_associated = ?3")
 	List<Trait> advanceSearch(int chromosome, String trait_associated, String specific_trait_associated);
+	
+	@Query("select COUNT(DISTINCT t.chromosome) from Trait t")
+	int getChromosomeCount();
+	
+	@Query("select DISTINCT t.chromosome from Trait t")
+	List<Object> getDistinctChromosome();
+	
+	@Query("select DISTINCT t.trait_associated from Trait t where chromosome = ?1")
+	List<Object> getTraitByChromosome(int chromosome);
+	
+	@Query("select DISTINCT t.specific_trait_associated from Trait t where trait_associated = ?1 and chromosome=?2")
+	List<Object> getSpecificTraitByTrait(String trait_class, int chromosome);
 
 }

@@ -1,7 +1,3 @@
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -154,95 +150,20 @@
 									<div class="form-group">
 										<div class="form-group">
 											<h4 class="text">CHROMOSOME</h4>
-											<select class="form-control" name="chromosome">
-												<%-- <c:forEach items="${listtrait}" var="trait">
-													<option value="${trait.chromosome}">${trait.chromosome}</option>
-												</c:forEach> --%>
-												<option value="-1">---Select CHROMOSOME---</option>
-												<%
-												try {
-													Class.forName("com.mysql.cj.jdbc.Driver");
-													Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_trait", "root", "Welcome@123");
-
-													String query = "SELECT DISTINCT chromosome FROM trait";
-													Statement st = conn.createStatement();
-													ResultSet rs = st.executeQuery(query);
-													while (rs.next()) {
-												%>
-												<option value="<%out.write("" + rs.getInt(1));%>">
-													<%
-													out.write("" + rs.getInt(1));
-													%>
-												</option>
-												<%
-												}
-												} catch (Exception e) {
-												e.printStackTrace();
-												}
-												%>
+											<select class="form-control" id="chromosome" name="chromosome">
 											</select>
 										</div>
 										<div class="form-group">
 											<h4 class="text">TRAIT CLASS</h4>
-											<select class="form-control" name="trait_associated">
-												<%-- <c:forEach items="${listtrait}" var="trait">
-													<option value="${trait.trait_associated}">${trait.trait_associated}</option>
-												</c:forEach> --%>
-												<option value="-1">---Select TRAIT CLASS---</option>
-												<%
-												try {
-													Class.forName("com.mysql.cj.jdbc.Driver");
-													Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_trait", "root", "Welcome@123");
-
-													String query = "SELECT DISTINCT trait_associated from trait";
-													Statement st = conn.createStatement();
-													ResultSet rs = st.executeQuery(query);
-													while (rs.next()) {
-												%>
-												<option value="<%out.write("" + rs.getString(1));%>">
-													<%
-													out.write("" + rs.getString(1));
-													%>
-												</option>
-												<%
-												}
-												} catch (Exception e) {
-												e.printStackTrace();
-												}
-												%>
-
+											<select class="form-control" id="trait_associated" name="trait_associated">
+												<option value = ""> Please Select Trait Associated </option>
 											</select>
 										</div>
 
 										<div class="form-group">
 											<h4 class="text">SPECIFIC TRAIT CLASS</h4>
-											<select class="form-control" name="specific_trait_associated">
-												<%-- <c:forEach items="${listtrait}" var="trait">
-													<option value="${trait.specific_trait_associated}">${trait.specific_trait_associated}</option>
-												</c:forEach> --%>
-												<option value="-1">---Select SPECIFIC TRAIT
-													CLASS---</option>
-												<%
-												try {
-													Class.forName("com.mysql.cj.jdbc.Driver");
-													Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_trait", "root", "Welcome@123");
-
-													String query = "SELECT DISTINCT specific_trait_associated from trait";
-													Statement st = conn.createStatement();
-													ResultSet rs = st.executeQuery(query);
-													while (rs.next()) {
-												%>
-												<option value="<%out.write("" + rs.getString(1));%>">
-													<%
-													out.write("" + rs.getString(1));
-													%>
-												</option>
-												<%
-												}
-												} catch (Exception e) {
-												e.printStackTrace();
-												}
-												%>
+											<select class="form-control" id="specific_trait_associated" name="specific_trait_associated">
+												<option value = ""> Please Select Specific Trait Associated </option>
 											</select>
 										</div>
 
@@ -297,6 +218,9 @@
 	<!-- Custom js for this page-->
 	<script src="/resources/js/dashboard.js"></script>
 	<!-- End custom js for this page-->
+	<script type="text/javascript" src="/resources/js/getchromosome.js" ></script>
+	<script type="text/javascript" src="/resources/js/gettraitclass.js" ></script>
+	<script type="text/javascript" src="/resources/js/getspecifictraitclass.js" ></script>
 </body>
 
 </html>
