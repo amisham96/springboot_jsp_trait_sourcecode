@@ -1,7 +1,32 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+int pageNo = request.getParameter("pageNo") == null ? 0 : Integer.parseInt(request.getParameter("pageNo"));
+int i = 0;
+String trait_associated = request.getParameter("trait_associated") == null ? "" : request.getParameter("trait_associated");
+String username = "root";
+String password = "Welcome@123";
+String url = "jdbc:mysql://localhost:3306/db_trait";
+String query = "SELECT COUNT(*) FROM trait";
+int total = 0;
+try {
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection conn = DriverManager.getConnection(url, username, password);
+	PreparedStatement pstmt = conn.prepareStatement(query);
+	ResultSet rs = pstmt.executeQuery();
+	if (rs.next()) {
+		total = rs.getInt(1);
+	}
+} catch (Exception e) {
+
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,9 +63,7 @@
 							class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 							<a class="navbar-brand brand-logo" href="/trait/index"
 								style="font-weight: bold;">Trait-specific genic-marker
-								database for rice</a> <a class="navbar-brand brand-logo-mini"
-								href="/trait/index"><img
-								src="/resources/images/logo-mini.svg" alt="logo" /></a>
+								database for rice</a>
 						</div>
 						<ul class="navbar-nav navbar-nav-right">
 							<li class="nav-item dropdown  d-lg-flex d-none">
@@ -170,16 +193,33 @@
 											</tbody>
 										</table>
 									</div>
+									<br>
+									<% if(trait_associated.equals("all")) { %>
+									<ul class="pagination justify-content-center">
+									<% if (pageNo > 0) { %>
+									<a href="advance_search?chromosome=all&trait_associated=all&specific_trait_associated=all&pageNo=<%=(pageNo - 1)%>" class="btn btn-danger">Previous</a>&nbsp;
+									<% } %>
+									<%
+									for (i = 1; i < total/400; i++) { %>
+                                        <a href="advance_search?chromosome=all&trait_associated=all&specific_trait_associated=all&pageNo=<%=i%>" class="btn btn-primary"><%=i%></a>&nbsp;
+                                    <% } %>
+                                    <% if (i > pageNo) { %>
+									<a href="advance_search?chromosome=all&trait_associated=all&specific_trait_associated=all&pageNo=<%=(pageNo + 1)%>" class="btn btn-danger">Next</a>&nbsp;
+									<% } %>
+									</ul>
+									<% } %><br>
+									<button class="btn form-control">
+										<a href="/trait/search_trait">Go Back</a>
+									</button>
 								</div>
 							</div>
-							<br><br><br>
-							<button class="btn form-control"><a href="/trait/search_trait">Go Back</a></button>
+							<br>
 						</div>
 					</div>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-				<footer class="footer">
+				<footer class="footer fixed-bottom">
 					<div class="footer-wrap">
 						<div
 							class="d-sm-flex justify-content-center justify-content-sm-between">

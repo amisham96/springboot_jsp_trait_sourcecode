@@ -38,9 +38,7 @@
 							class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 							<a class="navbar-brand brand-logo" href="/trait/index"
 								style="font-weight: bold;">Trait-specific genic-marker
-								database for rice</a> <a class="navbar-brand brand-logo-mini"
-								href="/trait/index"><img
-								src="/resources/images/logo-mini.svg" alt="logo" /></a>
+								database for rice</a>
 						</div>
 						<ul class="navbar-nav navbar-nav-right">
 							<li class="nav-item dropdown  d-lg-flex d-none">
@@ -167,7 +165,7 @@
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-				<footer class="footer">
+				<footer class="footer fixed-bottom">
 					<div class="footer-wrap">
 						<div
 							class="d-sm-flex justify-content-center justify-content-sm-between">

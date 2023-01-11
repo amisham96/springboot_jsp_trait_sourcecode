@@ -13,7 +13,7 @@ $(document).ready(function() {
 				url: '/trait/get_trait_by_chromosome?chromosome=' + chromosome,
 				success: function(data) {
 					console.log(data);
-					var s = '<option value = ""> Please Select Trait Class </option><option value = "all"> All </option>';
+					var s = '<option value = ""> Please Select Trait Class </option>';
 					for (var i = 0; i < data.length; i++) {
 						s += '<option value="' + data[i] + '">' + data[i] + '</option>';
 					}

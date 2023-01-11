@@ -38,9 +38,7 @@
 							class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 							<a class="navbar-brand brand-logo" href="/trait/index"
 								style="font-weight: bold;">Trait-specific genic-marker
-								database for rice</a> <a class="navbar-brand brand-logo-mini"
-								href="/trait/index"><img
-								src="/resources/images/logo-mini.svg" alt="logo" /></a>
+								database for rice</a>
 						</div>
 						<ul class="navbar-nav navbar-nav-right">
 							<li class="nav-item dropdown  d-lg-flex d-none">
@@ -136,8 +134,7 @@
 											placeholder="RAP ID/MSU ID" aria-label="search"
 											aria-describedby="search" />
 
-										<button type="submit" name="search_trait_by_id"
-											id="search_trait_by_id" class="btn btn-primary me-2">Search</button>
+										<button type="submit" class="btn btn-primary me-2">Search</button>
 									</div>
 								</form:form>
 							</div>
@@ -146,7 +143,7 @@
 								<h3 class="text-center">Advance Search</h3>
 								<br>
 								<form:form class="forms-sample" action="/trait/advance_search"
-									method="POST">
+									method="GET">
 									<div class="form-group">
 										<div class="form-group">
 											<h4 class="text">CHROMOSOME</h4>
@@ -169,17 +166,16 @@
 
 
 
-										<button type="submit" name="search_trait_by_id"
-											id="search_trait_by_id" class="btn btn-primary form-control">Search</button>
+										<button type="submit" class="btn btn-primary form-control">Search</button>
 									</div>
 								</form:form>
-							</div>
+							</div><br><br>
 						</div>
 					</div>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-				<footer class="footer">
+				<footer class="footer fixed-bottom">
 					<div class="footer-wrap">
 						<div
 							class="d-sm-flex justify-content-center justify-content-sm-between">

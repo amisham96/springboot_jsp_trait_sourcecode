@@ -82,13 +82,14 @@ public class TraitController {
 		return "search";
 	}
 
-	@RequestMapping(value = "/advance_search", method = RequestMethod.POST)
-	public ModelAndView Page(HttpServletRequest request, ModelAndView mav) {
+	@RequestMapping(value = "/advance_search", method = RequestMethod.GET)
+	public ModelAndView Page(HttpServletRequest request, ModelAndView mav,
+			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "400") Integer pageSize) {
 		String trait_class = request.getParameter("trait_associated");
 		System.out.println(trait_class);
 		String specific_trait_class = request.getParameter("specific_trait_associated");
 		if (trait_class.equals("all") && specific_trait_class.equals("all")) {
-			mav.addObject("listtrait", traitService.getAllTraitData());
+			mav.addObject("listtrait", traitService.getAllTraitData(pageNo, pageSize));
 		} else {
 			int chromosome = Integer.parseInt(request.getParameter("chromosome"));
 			mav.addObject("listtrait", traitService.getTraitByChromosomeTraitClassAndSpecificTraitClass(chromosome,

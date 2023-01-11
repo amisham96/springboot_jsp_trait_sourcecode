@@ -3,6 +3,9 @@ package com.example.tarit.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.tarit.model.Trait;
@@ -16,9 +19,11 @@ public class TraitServiceImpl implements TraitService {
 	TraitRepository traitRepo;
 
 	@Override
-	public List<Trait> getAllTraitData() {
+	public List<Trait> getAllTraitData(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return traitRepo.findAll();
+		Pageable paging = PageRequest.of(pageNo, pageSize);
+		Page<Trait> trait = traitRepo.findAll(paging);
+		return trait.toList();
 	}
 
 	@Override

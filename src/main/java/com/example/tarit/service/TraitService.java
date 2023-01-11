@@ -9,7 +9,7 @@ import com.example.tarit.model.Trait;
 @Service
 public interface TraitService {
 
-	List<Trait> getAllTraitData();
+	List<Trait> getAllTraitData(int pageNo, int pageSize);
 
 	List<Trait> getTraitDataByRapOrMsuId(String rap_msu_id);
 
